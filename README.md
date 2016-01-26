@@ -3,7 +3,7 @@ The queries and data for an Advanced SQL class at the [NICAR 2016 conference](ir
 
 
 This is a slightly modified version of the Advanced SQL class Liz Lucas [taught](https://github.com/eklucas/NICAR-Adv-SQL) at NICAR 2015. 
-Rather than using MySQL, we’re going to use SQLite.
+We’re going to use SQLite (instead of MySQL).
 
-We're going to a free Firefox plugin that makes it easier to use SQLite on your computer. It should already be on the classroom computers, but you can also download it [here](https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/).
+We're also going to use a free Firefox plugin that makes it easier to use SQLite on your computer. It should already be on the classroom computers, but you can also download it [here](https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/).
 
