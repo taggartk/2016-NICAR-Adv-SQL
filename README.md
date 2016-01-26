@@ -1,5 +1,5 @@
 # 2016-NICAR-Adv-SQL
-The queries and data for an Advanced SQL class at NICAR 2016
+The queries and data for an Advanced SQL class at the [NICAR 2016 conference](ire.org/conferences/nicar2016/).
 
 
 This is a slightly modified version of the Advanced SQL class Liz Lucas [taught](https://github.com/eklucas/NICAR-Adv-SQL) at NICAR 2015. 
