@@ -1,4 +1,7 @@
 # 2016-NICAR-Adv-SQL
+
+*** This is still a work in progress. Feel free to contribute! [Conference](http://ire.org/conferences/nicar2016/) begins March 10, 2016 ***
+
 The queries and data for an Advanced SQL class at the [NICAR 2016 conference](ire.org/conferences/nicar2016/).
 
 
