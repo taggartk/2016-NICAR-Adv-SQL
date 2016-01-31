@@ -48,3 +48,38 @@
 
 
 ## Clean it up and prep for analysis
+* I usually import everything as text, especially when I'm just getting to know the data.
+    But what if we want to take a closer look at inspections by year, for example.
+    (SQLite can be a little funky for dealing with dates. Here's the [documention](https://www.sqlite.org/lang_datefunc.html),
+    if you want to run down that rabbit hole).
+
+
+* Let's make a column with just the year the inspection was opened. 
+
+    `ALTER TABLE inspection`        
+    `ADD COLUMN year TEXT`      
+
+    `SELECT open_date, strftime('%Y', open_date) as year `     
+    `FROM inspection`
+    
+    `UPDATE inspection`     
+    `SET year = strftime('%Y', open_date)`
+
+* How's it look?
+
+    `SELECT open_date, year`        
+    `FROM inspection`       
+
+* How many inspections were there per year?
+
+    `SELECT year, count(*)`     
+    `FROM inspection`       
+    `GROUP BY 1`        
+    `ORDER BY 2 DESC`       
+
+* Check your work
+
+    `SELECT substr(open_date,1,4), count(*)`        
+    `FROM inspection`      
+    `GROUP BY 1`        
+    `ORDER BY 2 DESC`       
