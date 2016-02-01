@@ -10,3 +10,16 @@ We’re going to use SQLite (instead of MySQL).
 
 We're also going to use a free Firefox plugin that makes it easier to use SQLite on your computer. It should already be on the classroom computers, but you can also download it [here](https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/).
 
+What we'll cover:
+
+* Truthing data tables and joins
+* DISTINCT
+* CREATE TABLE
+* ALTER TABLE to add columns
+* UPDATE to populate new columns
+* Dealing with dates in SQLite (strftime)
+* How to calculate difference in days between two dates
+* Wildcards for more complex filtering
+* Aliases in table names
+* Outer joins
+* Subqueries
