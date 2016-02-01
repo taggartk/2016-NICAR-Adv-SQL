@@ -57,22 +57,22 @@
 * Let's make a column with just the year the inspection was opened. 
 
     `ALTER TABLE inspection`        
-    `ADD COLUMN year TEXT`      
+    `ADD COLUMN open_year TEXT`      
 
-    `SELECT open_date, strftime('%Y', open_date) as year `     
+    `SELECT open_date, strftime('%Y', open_date) as open_year`     
     `FROM inspection`
     
     `UPDATE inspection`     
-    `SET year = strftime('%Y', open_date)`
+    `SET open_year = strftime('%Y', open_date)`
 
 * How's it look?
 
-    `SELECT open_date, year`        
+    `SELECT open_date, open_year`        
     `FROM inspection`       
 
 * How many inspections were there per year?
 
-    `SELECT year, count(*)`     
+    `SELECT open_year, count(*)`     
     `FROM inspection`       
     `GROUP BY 1`        
     `ORDER BY 2 DESC`       
@@ -82,4 +82,49 @@
     `SELECT substr(open_date,1,4), count(*)`        
     `FROM inspection`      
     `GROUP BY 1`        
-    `ORDER BY 2 DESC`       
+    `ORDER BY 2 DESC` 
+
+* Want to know which month inspections are opened?
+
+    `SELECT strftime('%m', open_date) as open_month, count(*)`  
+    `FROM osha_inspection_2011_2015_test4`  
+    `GROUP BY 1`  
+
+* Now, how long was the longest case open? 
+
+    `SELECT activity_nr, open_date, close_case_date, (julianday(close_case_date) - julianday(open_date)) AS datediff`  
+    `FROM inspection`
+    `ORDER BY datediff DESC`
+
+* Translate to years (approximately)
+
+    `SELECT activity_nr, open_date, close_case_date, (julianday(close_case_date) - julianday(open_date))/365 AS datediff`
+    `FROM inspection`  
+    `ORDER BY datediff DESC`
+
+* Let's drill down the United States Postal Service, to flex our filtering muscles.
+    Take a look at some of the different ways it's spelled.
+
+    `SELECT estab_name, count(*)`  
+    `FROM inspection`  
+    `GROUP BY 1`  
+    `ORDER BY 2 DESC`  
+    
+    This should catch most of them
+    
+    `SELECT estab_name, count(*)`       
+    `FROM osha_inspection_2011_2015_test4`      
+    `WHERE`     
+        `estab_name LIKE '%u%s%POSTAL SERVICE%' OR`     
+        `estab_name LIKE '%USPS%'`      
+    `GROUP BY 1`        
+    `ORDER BY 1`        
+    
+* Now we'll take a look at the inspections that are connected with accident.
+    First, let's import the accident table into our SQLite database.
+
+    
+
+
+ 
+
