@@ -121,22 +121,17 @@
     `GROUP BY 1`        
     `ORDER BY 1`        
 
-* Let's take a look at how to use subqueries 
+* Let's take a look at how to use subqueries. For every record in the inspection table, let's get a total record count for the establishment associated with that inspection. (This took about 50 seconds when I timed it).
 
-    `SELECT a.*, b.estab_count`     
+    `SELECT b.estab_count, a.*`     
     `FROM inspection as a`      
     `JOIN`   
         `(SELECT estab_name, count(*) as estab_count`      
 	    `FROM inspection`  
 		`GROUP BY 1) as b`  
     `ON a.estab_name = b.estab_name`
-
-    Now for every record in your inspection table, you have a total record count for the establishment associated with that inspection. 
     
 * Now we'll take a look at the inspections that are connected with accident's that involved an injury.
-    First, let's import the accident_injury table into our SQLite database.
-
-## Add screenshot. Add other steps.
 
 * How many inspections included an accident that involved an injury?
 
@@ -153,7 +148,8 @@
     `INNER JOIN accident_injury`  
     `ON inspection.activity_nr =  accident_injury.rel_insp_nr`  
 
-* Now let's join this with data from the accident table (i.e. ______)
+* Now let's join this with data from the accident table, which includes fields like:
+	1) 'event_desc': Short description of event and 2) 'event_date'
 
     `SELECT *`      
     `FROM inspection_plus_injury`       
