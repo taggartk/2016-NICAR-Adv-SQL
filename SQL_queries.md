@@ -93,12 +93,13 @@
 * Now, how long was the longest case open? 
 
     `SELECT activity_nr, open_date, close_case_date, (julianday(close_case_date) - julianday(open_date)) AS datediff`  
-    `FROM inspection`
+    `FROM inspection`  
     `ORDER BY datediff DESC`
 
 * Translate to years (approximately)
 
-    `SELECT activity_nr, open_date, close_case_date, (julianday(close_case_date) - julianday(open_date))/365 AS datediff`
+    `SELECT activity_nr, open_date, close_case_date,`   
+    	`(julianday(close_case_date) - julianday(open_date))/365 AS datediff`  
     `FROM inspection`  
     `ORDER BY datediff DESC`
 
