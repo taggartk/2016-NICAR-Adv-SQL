@@ -132,13 +132,18 @@
     `ON a.estab_name = b.estab_name`
     
 * Now we'll take a look at the inspections that are connected with accident's that involved an injury.
+	
+   `TKTK`
 
 * How many inspections included an accident that involved an injury?
 
     `SELECT count(*)`  
     `FROM inspection`  
     `INNER JOIN accident_injury`  
-    `ON inspection.activity_nr =  accident_injury.rel_insp_nr`  
+    `ON inspection.activity_nr =  accident_injury.rel_insp_nr`
+    
+* Let's check to make sure that every record in the accident_injury table match a record in the inspection table.
+
     
 * Let's make a table with the result so we can query it later
 
@@ -151,6 +156,7 @@
 * Now let's join this with data from the accident table, which includes fields like:
 	1) 'event_desc': Short description of event and 2) 'event_date'
 
+    `CREATE TABLE osha_analysis_master AS`
     `SELECT *`      
     `FROM inspection_plus_injury`       
     `INNER JOIN accident`       
