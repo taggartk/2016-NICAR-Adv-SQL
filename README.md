@@ -8,13 +8,15 @@ This is a slightly modified version of the Advanced SQL class Liz Lucas [taught]
 
 All the SQL for the class is in this file: [SQL_queries.md](SQL_queries.md)
 
-inspection, accident, accident_injury were downloaded from the [DOL's OSHA download site](http://ogesdw.dol.gov/views/data_catalogs.php) on TKTK MM/DD/YYYY.
+We're going to use inspection data from the	Department of Labor/Occupational Safety and Health.
 
-Record layouts [Links TKTK]
-* Data dict from OSHA
-* inspection
-* accident
-* accident_injury
+Here's the description from [DOL's website](http://ogesdw.dol.gov/views/data_summary.php): "The dataset consists of inspection case detail for approximately 100,000 OSHA inspections conducted annually. The dataset includes information regarding the impetus for conducting the inspection, and details on citations and penalty assessments resulting from violations of OSHA standards. Additionally, accident investigation information is provided, including textual descriptions of the accident, and details regarding the injuries and fatalities which occurred."
+
+inspection, accident, accident_injury were downloaded from the [DOL's site](http://ogesdw.dol.gov/views/data_summary.php) on  02/11/2016.
+
+Record layouts
+* [Data dict from OSHA](http://enforcedata.dol.gov/views/dd_display.php)
+* Data dictionary in csv format (LINK TK)
 
 
 What we'll cover:
