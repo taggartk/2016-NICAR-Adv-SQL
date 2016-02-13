@@ -8,7 +8,6 @@
     `SELECT count(*)`  
     `FROM inspection`
 
-    There should be 473,955
 
 * Check for any duplicates — we know from the data dictionary 
   that 'activity_nr' should be the unique identifier for an 
