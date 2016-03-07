@@ -32,5 +32,4 @@ What we'll cover:
 * How to calculate difference in days between two dates
 * Wildcards for more complex filtering
 * Aliases in table names
-* Outer joins
 * Subqueries
