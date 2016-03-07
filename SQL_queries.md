@@ -86,7 +86,7 @@
 * Want to know which month inspections are opened?
 
     `SELECT strftime('%m', open_date) as open_month, count(*)`  
-    `FROM osha_inspection_2011_2015_test4`  
+    `FROM inspection`  
     `GROUP BY 1`  
 
 * Now, how long was the longest case open? 
