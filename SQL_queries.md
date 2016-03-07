@@ -130,7 +130,7 @@
 		`GROUP BY 1) as b`  
     `ON a.estab_name = b.estab_name`
     
-* Now we'll take a look at the inspections that are connected with accident's that involved an injury.
+* Now we'll take a look at the inspections that are connected with accidents that involved an injury.
 	
    `TKTK`
 
