@@ -12,7 +12,9 @@ We're going to use inspection data from the	Department of Labor/Occupational Saf
 
 Here's the description from [DOL's website](http://ogesdw.dol.gov/views/data_summary.php): "The dataset consists of inspection case detail for approximately 100,000 OSHA inspections conducted annually. The dataset includes information regarding the impetus for conducting the inspection, and details on citations and penalty assessments resulting from violations of OSHA standards. Additionally, accident investigation information is provided, including textual descriptions of the accident, and details regarding the injuries and fatalities which occurred."
 
-inspection, accident, accident_injury were downloaded from the [DOL's site](http://ogesdw.dol.gov/views/data_summary.php) on  02/11/2016.
+inspection, accident, accident_injury were downloaded from the [DOL's site](http://ogesdw.dol.gov/views/data_summary.php) on 02/11/2016.
+
+For this class, I limited the data to Jan 1, 2011 through December 31, 2015.
 
 Record layouts
 * [Data dict from OSHA](http://enforcedata.dol.gov/views/dd_display.php)
