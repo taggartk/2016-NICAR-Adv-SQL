@@ -113,7 +113,7 @@
     This should catch most of them
     
     `SELECT estab_name, count(*)`       
-    `FROM osha_inspection_2011_2015_test4`      
+    `FROM inspection`      
     `WHERE`     
         `estab_name LIKE '%u%s%POSTAL SERVICE%' OR`     
         `estab_name LIKE '%USPS%'`      
@@ -130,9 +130,9 @@
 		`GROUP BY 1) as b`  
     `ON a.estab_name = b.estab_name`
     
-* Now we'll take a look at the inspections that are connected with accidents that involved an injury.
-	
-   `TKTK`
+* Now we'll take a look at the inspections that are connected with accidents. 
+	* The three tables we're messing with are connected through these fields:  
+	Inspection.activity_nr --> accident_injury.rel_insp_nr, accident_injury.summary_nr --> accident.summary_nr
 
 * How many inspections included an accident that involved an injury?
 
@@ -143,6 +143,11 @@
     
 * Let's check to make sure that every record in the accident_injury table match a record in the inspection table.
 
+    `SELECT *`
+    `FROM accident_injury`
+    `LEFT JOIN inspection`
+    `ON accident_injury.rel_insp_nr = inspection.activity_nr`
+    `WHERE inspection.activity_nr IS NULL`
     
 * Let's make a table with the result so we can query it later
 
