@@ -178,7 +178,8 @@ Let's do another subquery to compare this to the total number of inspections.
 We can make that into a separate table to query: 
 
     CREATE TABLE advanced_notice_inspections AS
-    SELECT a.estab_name AS establishment_name, count(DISTINCT activity_nr) AS totalinspections, b.advanced_notice_insp AS 	             advanced_notice_count
+    SELECT a.estab_name AS establishment_name, count(DISTINCT activity_nr) AS totalinspections, 
+        b.advanced_notice_insp AS advanced_notice_count
     FROM inspection AS a
     JOIN
         (SELECT estab_name, COUNT(insp_type) AS advanced_notice_insp
@@ -199,8 +200,9 @@ And then take a look at the results (what percent of inspections were announced 
 
     
 Now we'll take a look at the inspections that are connected with accidents. 
-	* The three tables we're messing with are connected through these fields:  
-	Inspection.activity_nr --> accident_injury.rel_insp_nr, accident_injury.summary_nr --> accident.summary_nr
+
+The three tables we're messing with are connected through these fields:  
+    Inspection.activity_nr --> accident_injury.rel_insp_nr, accident_injury.summary_nr --> accident.summary_nr
 
 How many inspections included an accident that involved an injury?
 
@@ -233,3 +235,15 @@ Now let's join this with data from the accident table, which includes fields lik
     FROM inspection_plus_injury
     INNER JOIN accident     
     ON inspection_plus_injury.summary_nr = accident.summary_nr
+
+And now let's take a peak.
+
+    SELECT estab_name, event_desc
+    FROM osha_analysis_master
+    WHERE event_desc LIKE '%horse%'
+
+Or...
+
+    SELECT estab_name, event_keyword
+    FROM osha_analysis_master
+    WHERE event_keyword LIKE '%burn%'
