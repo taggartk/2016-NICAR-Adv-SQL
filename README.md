@@ -16,7 +16,7 @@ For this class, I limited the data to Jan 1, 2011 through December 31, 2015.
 
 Record layouts:
 * [Data dict from OSHA](http://enforcedata.dol.gov/views/dd_display.php)
-* Data dictionary in csv format (LINK TK)
+* [Layouts for the tables we'll be using](record_layouts.csv)
 
 
 What we'll cover:
