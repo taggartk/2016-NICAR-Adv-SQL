@@ -60,87 +60,89 @@ Overall looks pretty good — some blanks, some entries for the UK.
     that rabbit hole).
 
 
-* Let's make a column with just the year the inspection was opened. 
+Let's make a column with just the year the inspection was opened. 
 
-    `ALTER TABLE inspection`        
-    `ADD COLUMN open_year TEXT`      
+    ALTER TABLE inspection       
+    ADD COLUMN open_year TEXT
 
-    `SELECT open_date, strftime('%Y', open_date) as open_year`     
-    `FROM inspection`
-    
-    `UPDATE inspection`     
-    `SET open_year = strftime('%Y', open_date)`
+And then:
 
-* How's it look?
+    SELECT open_date, strftime('%Y', open_date) as open_year    
+    FROM inspection
+
+And then:
+
+    UPDATE inspection    
+    SET open_year = strftime('%Y', open_date)
+
+How's it look?
 
     `SELECT open_date, open_year`        
     `FROM inspection`       
 
-* How many inspections were there per year?
+How many inspections were there per year?
 
-    `SELECT open_year, count(*)`     
-    `FROM inspection`       
-    `GROUP BY 1`        
-    `ORDER BY 2 DESC`       
+    SELECT open_year, count(*)
+    FROM inspection     
+    GROUP BY 1 
+    ORDER BY 2 DESC     
 
-* Check your work
+Check your work
 
-    `SELECT substr(open_date,1,4), count(*)`        
-    `FROM inspection`      
-    `GROUP BY 1`        
-    `ORDER BY 2 DESC` 
+    SELECT substr(open_date,1,4), count(*)       
+    FROM inspection  
+    GROUP BY 1      
+    ORDER BY 2 DESC
 
-* Want to know which month inspections are opened?
+Want to know which month inspections are opened?
 
-    `SELECT strftime('%m', open_date) as open_month, count(*)`  
-    `FROM inspection`  
-    `GROUP BY 1`  
+    SELECT strftime('%m', open_date) as open_month, count(*)  
+    FROM inspection
+    GROUP BY 1
 
-* Now, how long was the longest case open? 
+Now, how long was the longest case open? 
 
-    `SELECT activity_nr, open_date, close_case_date, (julianday(close_case_date) - julianday(open_date)) AS datediff`  
-    `FROM inspection`  
-    `ORDER BY datediff DESC`
+    SELECT activity_nr, open_date, close_case_date, (julianday(close_case_date) - julianday(open_date)) AS datediff
+    FROM inspection
+    ORDER BY datediff DESC
 
-* Translate to years (approximately)
+Translate to years (approximately)
 
-    `SELECT activity_nr, open_date, close_case_date,`   
-    	`(julianday(close_case_date) - julianday(open_date))/365 AS datediff`  
-    `FROM inspection`  
-    `ORDER BY datediff DESC`
+    SELECT activity_nr, open_date, close_case_date,  
+    	(julianday(close_case_date) - julianday(open_date))/365 AS datediff 
+    FROM inspection
+    ORDER BY datediff DESC
 
-* Let's drill down the United States Postal Service, to flex our filtering muscles.
+Let's drill down the United States Postal Service, to flex our filtering muscles.
     Take a look at some of the different ways it's spelled.
 
-    `SELECT estab_name, count(*)`  
-    `FROM inspection`  
-    `GROUP BY 1`  
-    `ORDER BY 2 DESC`  
+    SELECT estab_name, count(*)
+    FROM inspection
+    GROUP BY 1
+    ORDER BY 2 DESC
     
-    This should catch most of them
-    
-    `SELECT estab_name, count(*)`       
-    `FROM inspection`      
-    `WHERE`     
-        `estab_name LIKE '%u%s%POSTAL SERVICE%' OR`     
-        `estab_name LIKE '%USPS%'`      
-    `GROUP BY 1`        
-    `ORDER BY 1`        
+This should catch most of them.
 
-* What if we want to get a count of the number of inspections for each establishment?
+    SELECT estab_name, count(*)
+    FROM inspection
+    WHERE
+        estab_name LIKE '%u%s%POSTAL SERVICE%' OR
+        estab_name LIKE '%USPS%'
+    GROUP BY 1
+    ORDER BY 1       
 
-    `SELECT estab_name, count(DISTINCT activity_nr)`
-    `FROM inspection`
-    `GROUP BY 1`
+What if we want to get a count of the number of inspections for each establishment?
 
-* Let's take a look at how to use subqueries. What if I want to know how many of the total inspections 
-	were initiated because of a complaint or an accident? Take a look at the insp_type field. 
-	This query will get us part of the way.
- 
-    `SELECT estab_name, COUNT(insp_type) AS acc_or_complaint_insp`
-    `FROM inspection`
-    `WHERE insp_type = 'A' OR insp_type = 'B'`
-    `GROUP BY 1`
+    SELECT estab_name, count(DISTINCT activity_nr)
+    FROM inspection
+    GROUP BY 1
+
+Let's take a look at how to use subqueries. What if I want to know how many of the total inspections were initiated because of a complaint or an accident? Take a look at the insp_type field. This query will get us part of the way.
+
+    SELECT estab_name, COUNT(insp_type) AS acc_or_complaint_insp
+    FROM inspection
+    WHERE insp_type = 'A' OR insp_type = 'B'
+    GROUP BY 1
 
 Then let's combine it with another query to be able to compare it to the total inspections:
 
