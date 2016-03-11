@@ -77,8 +77,8 @@ And then:
 
 How's it look?
 
-    `SELECT open_date, open_year`        
-    `FROM inspection`       
+    SELECT open_date, open_year       
+    FROM inspection`       
 
 How many inspections were there per year?
 
