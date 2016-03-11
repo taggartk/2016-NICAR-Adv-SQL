@@ -192,7 +192,7 @@ We can make that into a separate table to query:
 And then take a look at the results (what percent of inspections were announced in advanced? I filtered for places that had
 	had more than 5 inspections)
 
-    SELECT *, establishment_name, (advanced_notice_count*1.0)/(totalinspections*1.0) as pct_adv_notice
+    SELECT *, (advanced_notice_count*1.0)/(totalinspections*1.0) as pct_adv_notice
     FROM advanced_notice_inspections
     WHERE totalinspections > 5
     GROUP BY 1    
